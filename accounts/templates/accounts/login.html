@@ -1,23 +1,16 @@
-{% load static %}
+{% extends 'base.html' %}
 
-<html>
-    <head>
-        <title>Login</title>
-        <link rel="stylesheet" href="{% static 'accounts/styles.css' %}">
-    </head>
-    <body>
-        <div class="container">
-            <h1>Welcome</h1>
-            Welcome! You can login here!
-            <button class="btn btn-primary" type="button" name="button">Login</button>
-        </div>
-        <h1>{{ myName }}</h1>
-        <ul>
-            {% for number in numbers %}
-                <li>
-                    {{ number }}
-                </li>
-            {% endfor %}
-        </ul>
-    </body>
-</html>
+{% block body %}
+<div class="container">
+    <h1>Welcome</h1>
+    <p>
+        You can login here!
+    </p>
+    <h2>Login</h2>
+    <form action="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" type="submit">Login</button>
+    </form>
+</div>
+{% endblock body %}
